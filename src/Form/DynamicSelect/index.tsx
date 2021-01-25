@@ -17,7 +17,7 @@ export interface IProps {
   /**
    * 动态选择器的值，是个二维数组
    */
-  value?: Array<Array<Object>>;
+  value?: Array<Object>;
   /**
    * 动态选择器的每一项数据
    */
@@ -25,7 +25,8 @@ export interface IProps {
   /**
    * 动态选择器变动的回调
    */
-  onChange: (value: Array<Array<Object>>) => value;
+  onChange: (value: Array<Array<Object>>) => void;
+  form: any;
 }
 
 export interface SelectItem {
@@ -43,7 +44,7 @@ export interface SelectListItem {
 }
 
 function DynamicSelect(props: IProps) {
-  const [value, setValue] = useState<Array<object>>([]);
+  const [value, setValue] = useState<any>([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -69,7 +70,7 @@ function DynamicSelect(props: IProps) {
     }
 
     form.setFieldsValue({
-      keys: keys.filter(key => key !== k),
+      keys: keys.filter((key: number) => key !== k),
     });
   };
 
@@ -85,7 +86,7 @@ function DynamicSelect(props: IProps) {
   const getValues = useCallback(() => props.form.getFieldValue('names'), []);
 
   const handleChange = (val: string, key: number, index: number) => {
-    const newValue = getValues().reduce((t, v) => [...t, v], []);
+    const newValue = getValues().reduce((t: any, v: any) => [...t, v], []);
     newValue[index][key] = val;
     props.onChange(newValue);
   };
@@ -97,7 +98,8 @@ function DynamicSelect(props: IProps) {
 
   getFieldDecorator('keys', { initialValue: [] });
   const keys = getFieldValue('keys');
-  const formItems = keys.map((k, index) => (
+
+  const formItems = keys.map((k: number, index: number) => (
     <Form.Item {...formItemLayout} label="" required={false} key={k}>
       <Row>
         <Col span={22}>
@@ -110,12 +112,14 @@ function DynamicSelect(props: IProps) {
                   <Select
                     placeholder={item.placeholder}
                     key={`${item.key}-${k}`}
-                    onChange={val => {
+                    onChange={(val: any) => {
                       handleChange(val, item.key, index);
                     }}
                   >
                     {item.list.map(ite => (
-                      <Select.Option key={ite.key}>{ite.value}</Select.Option>
+                      <Select.Option key={`${ite.key}`}>
+                        {ite.value}
+                      </Select.Option>
                     ))}
                   </Select>,
                 )}

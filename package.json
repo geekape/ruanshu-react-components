@@ -1,9 +1,9 @@
 {
-  "private": true,
-  "name": "dumi-template",
-  "version": "1.0.0",
+  "private": false,
+  "name": "ruanshu-react",
+  "version": "1.0.1",
   "scripts": {
-    "start": "dumi dev",
+    "start": "set PORT=8888 && dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/umijs/dumi-template",
+    "url": "https://github.com/geekape/ruanshu-react-components",
     "branch": "main"
   },
   "lint-staged": {
@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "antd": "3.23.6",
-    "react": "^17.0.1"
+    "react": "^17.0.1",
+    "ruanshu-react": "^1.0.1"
   },
   "devDependencies": {
     "@umijs/test": "^3.0.5",

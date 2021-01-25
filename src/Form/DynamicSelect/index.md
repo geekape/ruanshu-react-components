@@ -14,7 +14,7 @@ title: DynamicSelect 动态选择器
  * desc: '666'
  */
 import React from 'react';
-import DynamicSelect from './index';
+import { DynamicSelect } from 'ruanshu-react';
 
 const sexTypes = [
   { key: '0', value: '男' },
@@ -36,7 +36,7 @@ export default () => {
         { key: 'childName', list: sexTypes, placeholder: '性别' },
         { key: 'childGender', list: childAgeTypes, placeholder: '多大' },
       ]}
-      value={[[{ childName: '0', childGender: '0' }]]}
+      value={[{ childName: '0', childGender: '0' }]}
       onChange={ev => {
         setValue(ev);
       }}
