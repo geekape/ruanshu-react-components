@@ -10,6 +10,7 @@
     "baseUrl": "./",
     "strict": true,
     "paths": {
+      "@ruanshu/react": ["src/index.ts"],
       "@/*": ["src/*"],
       "@@/*": ["src/.umi/*"]
     },
