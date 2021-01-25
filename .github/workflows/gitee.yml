@@ -1,5 +1,8 @@
 name: Sync To Gitee
-on: main
+on:
+  push:
+    branches:
+      - main # default branch
 jobs:
   sync:
     runs-on: ubuntu-latest
