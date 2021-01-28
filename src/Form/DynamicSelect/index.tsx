@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { Form, Icon, Select, Row, Col, Button } from 'antd';
 import './index.less';
@@ -107,7 +109,7 @@ function DynamicSelect(props: IProps) {
             {selects.map(item => (
               <Col span={24 / selects.length} key={item.key}>
                 {getFieldDecorator(`names[${k}][${item.key}]`, {
-                  initialValue: value[k] && value[k][item.key],
+                  initialValue: value[k] && String(value[k][item.key]),
                 })(
                   <Select
                     placeholder={item.placeholder}

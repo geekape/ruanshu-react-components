@@ -10,41 +10,37 @@ title: DynamicSelect 动态选择器
 
 ```jsx
 /**
- * title: 基础使用
- * desc: '666'
+ * title: 单个默认值
  */
 import React from 'react';
-import { DynamicSelect } from 'ruanshu-react';
-
-const sexTypes = [
-  { key: '0', value: '男' },
-  { key: '1', value: '女' },
-];
-const childAgeTypes = [
-  { key: '0', value: '1-3个月' },
-  { key: '1', value: '3-6个月' },
-  { key: '2', value: '6-9个月' },
-  { key: '3', value: '9-12个月' },
-];
+import DynamicSelect from './index';
+import { useDynamicSelect } from './common';
 
 export default () => {
-  const [value, setValue] = React.useState([]);
+  const { dynamicSelectProps } = useDynamicSelect();
 
-  return [
-    <DynamicSelect
-      selects={[
-        { key: 'childName', list: sexTypes, placeholder: '性别' },
-        { key: 'childGender', list: childAgeTypes, placeholder: '多大' },
-      ]}
-      value={[{ childName: '0', childGender: '0' }]}
-      onChange={ev => {
-        setValue(ev);
-      }}
-    />,
-  ];
+  return <DynamicSelect {...dynamicSelectProps} />;
+};
+```
+
+```jsx
+/**
+ * title: 多个默认值
+ */
+import React from 'react';
+import DynamicSelect from './index';
+import { useDynamicSelect, selectKeys } from './common';
+
+export default () => {
+  const { dynamicSelectProps } = useDynamicSelect(
+    Array(10).fill({
+      [selectKeys[0]]: 0,
+      [selectKeys[1]]: 1,
+    }),
+  );
+
+  return <DynamicSelect {...dynamicSelectProps} />;
 };
 ```
 
 <API></API>
-
----

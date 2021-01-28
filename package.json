@@ -1,9 +1,9 @@
 {
   "private": false,
   "name": "ruanshu-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
-    "start": "set PORT=8888 && dumi dev",
+    "start": "set PORT=8888 UMI_ENV=dumi && dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
@@ -33,9 +33,14 @@
     ]
   },
   "dependencies": {
+    "@ant-design/pro-layout": "4.9.11",
+    "@umijs/fabric": "^2.5.6",
     "antd": "3.23.6",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
-    "ruanshu-react": "^1.0.1"
+    "ruanshu-react": "^1.0.1",
+    "umi": "2.8.7"
   },
   "devDependencies": {
     "@umijs/test": "^3.0.5",
