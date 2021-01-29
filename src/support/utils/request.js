@@ -5,6 +5,7 @@ import {
   handleResponse,
   handleResponseFailure,
 } from '../config';
+import { history } from 'umi';
 import { parseFormData, parseUrlData } from './transform';
 
 const codeMessage = {
@@ -64,9 +65,9 @@ export function request(params) {
   } else {
     temp.headers = { ...headers };
   }
-  // if (checkLogin && !checkLoginPermissions()) {
-  //   router.replace('/user/login');
-  // }
+  if (checkLogin && !checkLoginPermissions()) {
+    history.replace('/user/login');
+  }
   if (['POST', 'PUT', 'DELETE'].find(item => temp.method === item) && body) {
     if (bodyType === 'FORM_DATA') {
       temp.body = parseFormData(body);

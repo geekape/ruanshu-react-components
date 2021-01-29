@@ -3,11 +3,11 @@
  * */
 import React from 'react';
 import { Icon, Modal } from 'antd';
-import { exPush } from '../support/utils/router-helper';
-import styles from './ActionTemplate.less';
-import { COMMON_STATUS, COMMON_STATUS_COLOR } from '@/constants/common';
-import { findAttributeValue } from '@/support/utils/transform';
-import ChangeStatusWidget from '@/components/ChangeStatusWidget';
+import { exPush } from './routerHelper';
+import styles from './actionTemplate.less';
+import { COMMON_STATUS, COMMON_STATUS_COLOR } from './constants';
+import { findAttributeValue } from './transform';
+import ChangeStatusWidget from '../widget/ChangeStatusWidget';
 
 const { confirm } = Modal;
 

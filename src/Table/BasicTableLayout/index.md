@@ -31,8 +31,11 @@ export default class DemoDefaultTable extends BasicTableLayout {
 import React from 'react';
 import BasicTableLayout from './index';
 import { fields } from './common';
+import { createTextLink } from '../../support/utils/actionTemplate';
+import { withRefresh } from '../../support/hoc/refresh';
 
-export default class DemoDefaultTable extends BasicTableLayout {
+//TODO 添加请求数据
+class DemoDefaultTable extends BasicTableLayout {
   stepTableFields() {
     const columns = this.initActionColumns(fields);
     return { columns };

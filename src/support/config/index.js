@@ -118,3 +118,35 @@ export function checkAuthority(authorities, type) {
 
   return false;
 }
+
+/**
+ * 全局列表请求请求默认携带参数
+ * */
+export function defaultListParams(page = 1, pageSize) {
+  return { page: page - 1, size: pageSize };
+}
+
+/**
+ * 解析Response List数据, 返回ListData
+ * return {
+ *     list: Array,
+ *     total : Integer
+ * }
+ * */
+export function parseListData(data) {
+  let list = [];
+  let total = 0;
+  if (data && Array.isArray(data) && data.length > 0) {
+    list = data;
+    total = data.length;
+  } else if (data && data.content && data.content.length > 0) {
+    list = data.content;
+  } else if (data && data.list && data.list.length > 0) {
+    list = data.list;
+  }
+
+  if (data && data.totalElements) {
+    total = data.totalElements;
+  }
+  return { list, total };
+}
